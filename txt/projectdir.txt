@@ -1,0 +1,8 @@
+ml-fastapi-app/
+├── main.py
+├── rf_model.pkl (ignored via .gitignore)
+├── templates/
+│   └── index.html
+├── requirements.txt
+├── .gitignore
+└── render.yaml
