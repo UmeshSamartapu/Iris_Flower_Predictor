@@ -1,20 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Iris Flower Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffffcc;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #4A148C;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0;
+            text-align: left;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #4A148C;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #4a148c;
+            transform: scale(1.05);
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #2E7D32;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>🌸 Iris Flower Predictor</h1>
-    <form action="/predict" method="post">
-        <label>Sepal Length (cm): <input type="number" step="any" name="f1" required></label><br><br>
-        <label>Sepal Width (cm): <input type="number" step="any" name="f2" required></label><br><br>
-        <label>Petal Length (cm): <input type="number" step="any" name="f3" required></label><br><br>
-        <label>Petal Width (cm): <input type="number" step="any" name="f4" required></label><br><br>
-        <button type="submit">Predict</button>
-    </form>
+    <div class="container">
+        <h1>Iris Flower Predictor</h1>
+        <form action="/predict" method="post">
+            <label>Sepal Length (cm): 
+                <input type="number" step="any" name="f1" required>
+            </label>
+            <label>Sepal Width (cm): 
+                <input type="number" step="any" name="f2" required>
+            </label>
+            <label>Petal Length (cm): 
+                <input type="number" step="any" name="f3" required>
+            </label>
+            <label>Petal Width (cm): 
+                <input type="number" step="any" name="f4" required>
+            </label>
+            <button type="submit">Predict</button>
+        </form>
 
-    {% if result %}
-        <h2>{{ result }}</h2>
-    {% endif %}
+        {% if result %}
+            <h2>{{ result }}</h2>
+        {% endif %}
+    </div>
 </body>
 </html>
