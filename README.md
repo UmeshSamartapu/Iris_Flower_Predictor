@@ -13,7 +13,7 @@ A machine learning web application for classifying Iris flower species using Ran
 - ☁️ Automatic model download from Hugging Face
 - 📱 Mobile-friendly design
 
-### Technologies Used
+## Technologies Used
 
 - **Backend:** FastAPI, Python
 - **ML Framework:** scikit-learn, joblib
