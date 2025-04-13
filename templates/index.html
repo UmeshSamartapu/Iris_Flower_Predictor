@@ -223,15 +223,29 @@
     </div>
 
     <script>
+        function getRandomIrisValue(feature) {
+            // Realistic ranges for iris features (in cm)
+            const ranges = {
+                sepalLength: { min: 4.0, max: 7.5 },
+                sepalWidth: { min: 2.0, max: 4.5 },
+                petalLength: { min: 1.0, max: 7.0 },
+                petalWidth: { min: 0.1, max: 2.5 }
+            };
+            
+            // Generate random value within specified range
+            const value = Math.random() * (ranges[feature].max - ranges[feature].min) + ranges[feature].min;
+            return parseFloat(value.toFixed(1)); // Round to 1 decimal place
+        }
+    
         function fillSampleData() {
             const inputs = document.querySelectorAll('input');
-            inputs[0].value = 5.1;  // Sepal Length
-            inputs[1].value = 3.5;  // Sepal Width
-            inputs[2].value = 1.4;  // Petal Length
-            inputs[3].value = 0.2;  // Petal Width
+            inputs[0].value = getRandomIrisValue('sepalLength');
+            inputs[1].value = getRandomIrisValue('sepalWidth');
+            inputs[2].value = getRandomIrisValue('petalLength');
+            inputs[3].value = getRandomIrisValue('petalWidth');
         }
-
-        // Add input validation
+    
+        // Input validation
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', (e) => {
                 if (e.target.value < 0) e.target.value = 0;
