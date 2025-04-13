@@ -1,256 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Iris Flower Predictor 🌸</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #7C4DFF;
-            --secondary: #FFAB91;
-            --accent: #00BFA5;
-        }
+  <meta charset="UTF-8">
+  <title>Iris Flower Predictor 🌸</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4e4f91;
+      --secondary: #f9f7f2;
+      --accent: #856bdc;
+      --info: #99adcb;
+      --success: #6cb391;
+      --warning: #ecb84f;
+      --highlight: #f9d194;
+      --lavender: #c3adc2;
+    }
 
-        * {
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            background: linear-gradient(45deg, #e6f5f3, #f3e5f5);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
-        }
+    body {
+      background: linear-gradient(45deg, var(--secondary), var(--info));
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+    }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 450px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    .container {
+      background: var(--secondary);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 450px;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .container:hover {
-            transform: translateY(-5px);
-        }
+    .container:hover {
+      transform: translateY(-5px);
+    }
 
-        h1 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+    h1 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
 
-        .flower-icon {
-            animation: float 3s ease-in-out infinite;
-        }
+    .flower-icon {
+      animation: float 3s ease-in-out infinite;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
 
-        .input-group {
-            position: relative;
-        }
+    .input-group {
+      position: relative;
+    }
 
-        input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #eee;
-            border-radius: 0.8rem;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
-        }
+    input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--lavender);
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #fffefc;
+    }
 
-        input:focus {
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2);
-            outline: none;
-        }
+    input:focus {
+      border-color: var(--accent);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(133, 107, 220, 0.2);
+      outline: none;
+    }
 
-        label {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
-            padding: 0 0.3rem;
-        }
+    label {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      background: #fffefc;
+      padding: 0 0.3rem;
+    }
 
-        input:focus ~ label,
-        input:not(:placeholder-shown) ~ label {
-            top: 0;
-            font-size: 0.8rem;
-            color: var(--primary);
-            background: white;
-        }
+    input:focus ~ label,
+    input:not(:placeholder-shown) ~ label {
+      top: 0;
+      font-size: 0.8rem;
+      color: var(--primary);
+      background: white;
+    }
 
-        button {
-            padding: 1rem;
-            background: linear-gradient(45deg, var(--primary), #651FFF);
-            color: white;
-            border: none;
-            border-radius: 0.8rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+    button {
+      padding: 1rem;
+      background: linear-gradient(45deg, var(--accent), var(--primary));
+      color: white;
+      border: none;
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(101, 31, 255, 0.3);
-        }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(78, 79, 145, 0.3);
+    }
 
-        .result-card {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 0.8rem;
-            animation: fadeIn 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-        }
+    .result-card {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--highlight);
+      border-radius: 0.8rem;
+      animation: fadeIn 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
 
-        .result-card span {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
+    .result-card span {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .sample-btn {
-            text-align: center;
-            margin-top: 1rem;
-            color: var(--accent);
-            cursor: pointer;
-            text-decoration: underline;
-            font-size: 0.9rem;
-        }
+    .sample-btn {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--success);
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 0.9rem;
+    }
 
-        .sample-btn:hover {
-            color: #009688;
-        }
+    .sample-btn:hover {
+      color: var(--accent);
+    }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 1.5rem;
-                width: 95%;
-            }
-            
-            h1 {
-                font-size: 1.75rem;
-            }
-        }
-    </style>
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem;
+        width: 95%;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>
-            <i class="fas fa-seedling flower-icon"></i>
-            Iris Flower Predictor
-        </h1>
-        <form action="/predict" method="post">
-            <div class="input-group">
-                <input type="number" step="any" name="f1" required placeholder=" ">
-                <label><i class="fas fa-ruler"></i> Sepal Length (cm)</label>
-            </div>
-            <div class="input-group">
-                <input type="number" step="any" name="f2" required placeholder=" ">
-                <label><i class="fas fa-ruler"></i> Sepal Width (cm)</label>
-            </div>
-            <div class="input-group">
-                <input type="number" step="any" name="f3" required placeholder=" ">
-                <label><i class="fas fa-leaf"></i> Petal Length (cm)</label>
-            </div>
-            <div class="input-group">
-                <input type="number" step="any" name="f4" required placeholder=" ">
-                <label><i class="fas fa-leaf"></i> Petal Width (cm)</label>
-            </div>
-            <button type="submit">
-                <i class="fas fa-magic"></i>
-                Predict Flower
-            </button>
-        </form>
+  <div class="container">
+    <h1>
+      <i class="fas fa-seedling flower-icon"></i>
+      Iris Flower Predictor
+    </h1>
+    <form action="/predict" method="post">
+      <div class="input-group">
+        <input type="number" step="any" name="f1" required placeholder=" ">
+        <label><i class="fas fa-ruler"></i> Sepal Length (cm)</label>
+      </div>
+      <div class="input-group">
+        <input type="number" step="any" name="f2" required placeholder=" ">
+        <label><i class="fas fa-ruler"></i> Sepal Width (cm)</label>
+      </div>
+      <div class="input-group">
+        <input type="number" step="any" name="f3" required placeholder=" ">
+        <label><i class="fas fa-leaf"></i> Petal Length (cm)</label>
+      </div>
+      <div class="input-group">
+        <input type="number" step="any" name="f4" required placeholder=" ">
+        <label><i class="fas fa-leaf"></i> Petal Width (cm)</label>
+      </div>
+      <button type="submit">
+        <i class="fas fa-magic"></i>
+        Predict Flower
+      </button>
+    </form>
 
-        {% if result %}
-            <div class="result-card">
-                <i class="fas fa-spa" style="color: var(--accent); font-size: 1.5rem;"></i>
-                <span>Predicted Flower: {{ result }}</span>
-            </div>
-        {% endif %}
-
-        <div class="sample-btn" onclick="fillSampleData()">
-            Try sample values 🌸
-        </div>
+    {% if result %}
+    <div class="result-card">
+      <i class="fas fa-spa" style="color: var(--success); font-size: 1.5rem;"></i>
+      <span>Predicted Flower: {{ result }}</span>
     </div>
+    {% endif %}
 
-    <script>
-        function getRandomIrisValue(feature) {
-            // Realistic ranges for iris features (in cm)
-            const ranges = {
-                sepalLength: { min: 4.0, max: 7.5 },
-                sepalWidth: { min: 2.0, max: 4.5 },
-                petalLength: { min: 1.0, max: 7.0 },
-                petalWidth: { min: 0.1, max: 2.5 }
-            };
-            
-            // Generate random value within specified range
-            const value = Math.random() * (ranges[feature].max - ranges[feature].min) + ranges[feature].min;
-            return parseFloat(value.toFixed(1)); // Round to 1 decimal place
-        }
-    
-        function fillSampleData() {
-            const inputs = document.querySelectorAll('input');
-            inputs[0].value = getRandomIrisValue('sepalLength');
-            inputs[1].value = getRandomIrisValue('sepalWidth');
-            inputs[2].value = getRandomIrisValue('petalLength');
-            inputs[3].value = getRandomIrisValue('petalWidth');
-        }
-    
-        // Input validation
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', (e) => {
-                if (e.target.value < 0) e.target.value = 0;
-            });
-        });
-    </script>
+    <div class="sample-btn" onclick="fillSampleData()">
+      Try sample values
+    </div>
+  </div>
+
+  <script>
+    function getRandomIrisValue(feature) {
+      const ranges = {
+        sepalLength: { min: 4.0, max: 7.5 },
+        sepalWidth: { min: 2.0, max: 4.5 },
+        petalLength: { min: 1.0, max: 7.0 },
+        petalWidth: { min: 0.1, max: 2.5 }
+      };
+      const value = Math.random() * (ranges[feature].max - ranges[feature].min) + ranges[feature].min;
+      return parseFloat(value.toFixed(1));
+    }
+
+    function fillSampleData() {
+      const inputs = document.querySelectorAll('input');
+      inputs[0].value = getRandomIrisValue('sepalLength');
+      inputs[1].value = getRandomIrisValue('sepalWidth');
+      inputs[2].value = getRandomIrisValue('petalLength');
+      inputs[3].value = getRandomIrisValue('petalWidth');
+    }
+
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', (e) => {
+        if (e.target.value < 0) e.target.value = 0;
+      });
+    });
+  </script>
 </body>
 </html>
