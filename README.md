@@ -1,6 +1,6 @@
 # Iris Flower Predictor
 
-[![Preview image](https://via.placeholder.com/800x400.png?text=Add+Screenshot+Here)](https://example.com)
+![Preview image](https://github.com/UmeshSamartapu/smart-iris-predictor/blob/main/templates/smart_iris_predictor_pic.png)
 
 A machine learning web application for classifying Iris flower species using Random Forest and FastAPI.
 
@@ -89,7 +89,7 @@ smart-iris-predictor/
 ## Demo 
 ### You can watch the ([youtube video](    )) for demo
 <p align="center">
-  <img src=" " />
+  <img src="https://github.com/UmeshSamartapu/smart-iris-predictor/blob/main/templates/smart_iris_predictor_gif.gif " />
 </p>
 
 
