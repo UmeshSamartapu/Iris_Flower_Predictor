@@ -75,7 +75,7 @@ smart-iris-predictor/
 ```
 
 ### Acknowledgments
-```bash
+
 - scikit-learn for machine learning framework
 
 - Hugging Face for model hosting
@@ -84,7 +84,7 @@ smart-iris-predictor/
 
 - **Maintainer:** Umesh Samartapu
 
-```
+
 
 ## Demo 
 ### You can watch the ([youtube video](    )) for demo
